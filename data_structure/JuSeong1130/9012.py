@@ -21,6 +21,20 @@ for i in range(n):
     else :
         print("NO")
 
+"""
+import re
+
+input_string = "Hello, world! Hello, Python!"
+
+# "Hello"를 "Hi"로 대체
+output_string = re.sub(r'Hello', 'Hi', input_string)
+
+print(output_string)
+"""
+
+
+
+
 
 """
 다른 사람 풀이
