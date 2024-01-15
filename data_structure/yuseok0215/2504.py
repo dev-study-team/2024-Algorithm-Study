@@ -30,3 +30,9 @@ for i in range(len(p)):
     if p[i-1]=='[': result += tmp
     tmp //= 3
     stack.pop()
+    
+# 결과 출력
+if stack: # 열린 괄호가 더 많을 때
+  print(0)
+else:
+  print(result)
