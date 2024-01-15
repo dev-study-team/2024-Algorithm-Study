@@ -17,8 +17,6 @@
 2. ) ] 가 들어왔는데 len가 없는 상황 pop할때 오류나서안됨
 
 """
-
-
 from collections import deque
 
 input_str = deque(input())
@@ -68,12 +66,63 @@ for i in range(length) :
                 stack.append(res)
                 break                
             res += 3 * int(num)
-    else : 
-        stack.append(input_str.pop())
 if success  == False or "(" in stack or "[" in stack:
     print(0)
 else :
     print(sum(stack))
+
+
+다른 사람 코드
+
+이문제의 풀이 방식은 (가 나오면 2를 곱하고 [ 가나오면 3을 곱하고] 가나오면 3을 나누고 )가 나오면 2를 나눠 구하는 문제이다.
+
+(()[[]]) 의 경우 
+2 * 2  앞에 있는 값은 4가 되고 이후 result에 값을 넣은 다음에 () = 2는 계산됬으니 2를 나눠준다.
+그리고 ( [ [ 2 * 3 * 3 이 되는데 ]가 나올때 그리고 []가 완성됬을때 값을 계산해 넣어준다 뒤에 있는 ]는 앞에]가 나오면 값을 넣어주지 않는다 이미 앞에서 계산된 값이 들어갔기 때문이다.
+즉 (2 * 2) + (2 * 9)가 되게 만들면된다 어렵다..
+
+stack = [] # 스택
+res = 1 # result에 더해주기 전 임시 변수
+result = 0 # 결과 변수
+p = list(input()) # 입력값
+
+# 1~4번째 과정 시작
+for i in range(len(p)):
+  if p[i]=='(':
+    res *= 2
+    stack.append(p[i])
+    
+  elif p[i]=='[':
+    res *= 3
+    stack.append(p[i])
+    
+  elif p[i]==')':
+    if not stack or stack[-1]!='(':
+      result = 0
+      break
+    if p[i-1]=='(': result += res
+    res //= 2
+    stack.pop()
+    
+  elif p[i]==']':
+    if not stack or stack[-1]!='[':
+      result = 0
+      break
+    if p[i-1]=='[': # 이문제의 키는 여기다 [[]]의경우 맨마지막 ]는 전이 ]이니 계산되지않는다 즉 앞에서 계산됬으니 계산하지 않는것
+        result += res
+    res //= 3
+    stack.pop()
+
+
+# 결과 출력
+if stack: # stack에 값이 들어있는 경우 ( [ 인경
+  print(0)
+else:
+  print(result)
+
+
+
+
 
     
 
