@@ -41,7 +41,7 @@ while data: # data가 존재하는 동안
 	ret = data.pop(idx) # 추출 값
 	print(ret[0], end=' ') # 인덱스 출력
 	if ret[1] < 0 and data: # 다음 인덱스 위치가 음수면
-		idx = (idx + ret[1]) % len(data) # 왼쪽으로
+		idx = (idx + ret[1]) % len(data) # 왼쪽으로 
 	elif ret[1] > 0 and data: # 다음 인덱스 위치가 양수면
 		idx = (idx + (ret[1] - 1)) % len(data) # pop한 1덱스 하나 제외 후 오른쪽으로
 

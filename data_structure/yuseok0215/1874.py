@@ -1,9 +1,13 @@
 """
-문제의 의도만 확인..
+여러번 봐줘야 하는 문제
+count를 누적으로 이용해서 오름차순 순열을 표현했다
+그리고 현재 숫자를 기준으로 푸쉬할만큼 하고 마지막 pop할 숫자가 현재 숫자와 일치하지 않으면
+아예 못만든다는 사실을 인지하는 것이 필요했다.
 
 43687521
 
 43 6 87 521
+9
 
 1234 ++++
 12 -- 
@@ -24,7 +28,7 @@ N = int(input())
 for i in range(N):
     num = int(input())
     # num이하 숫자까지 스택에 넣기
-    while count <= num:
+    while count <= num: # 제일 중요한 부분....
         stack.append(count)
         op.append('+')
         count += 1
