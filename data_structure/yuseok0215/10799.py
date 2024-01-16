@@ -32,7 +32,7 @@ cnt = 0
 for i in range(len(ir)):
     if ir[i] == "(":
         stack.append("(")
-    else :
+    else : # 닫힌 괄호일 때
         if ir[i-1]=="(":
             stack.pop()
             cnt+=len(stack) # 첫 번째 경우인 현재의 쇠막대기들을 카운팅합니다.
