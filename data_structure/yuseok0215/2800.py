@@ -1,20 +1,28 @@
 """
-경우의 수는 n! + 1 이다
+설마 설마 했는데 진짜 콤비네이션을 사용했던 문제...
 
-괄호의 쌍을 제거하는 경우의 수 n! + 1 만큼 출력하자
+
 """
 
-import sys
+from itertools import combinations
 
-input = sys.stdin.readline
+expr = list(input())
+indices = []
+stk = []
+answers = set()
 
-arr = input()
+for i in range(len(expr)):
+    if expr[i] == '(': 
+        stk.append(i)
+    elif expr[i] == ')': # 서로 쌍을 이루는 괄호의 index 쌍을 모은 리스트
+        indices.append((stk.pop(), i))
 
-cnt = 0
-for elem in arr: # 괄호의 개수 구하기
-    if elem == '(':
-        cnt += 1
+for i in range(len(indices)):
+    for comb in combinations(indices, i+1): # 조합의 길이가 1,2,3
+        temp = expr[:] # 단순복사
+        for idx in comb:
+            temp[idx[0]] = temp[idx[1]] = "" # 빈문자를 삽입하는 이유는 index를 변하지 않게 하기 위함
+        answers.add("".join(temp))      
 
-case  = []
-for i in range(cnt):
-    for i
+for item in sorted(list(answers)):
+    print(item)
