@@ -26,7 +26,7 @@ def soluction() :
     global isWorking
 
     while isInput :
-        buf = input().rstrip().split("  ")
+        buf = input().rstrip().split("  ") # 입력 받기
         if buf[0] == '' :
             continue
         for temp in buf :
@@ -38,6 +38,7 @@ def soluction() :
                 isWorking = False
                 isInput = False
                 break
+
             # node를 딕셔너리에 저장한다.
             if a in node_dict :
                 node_dict[a].child.append(b)
@@ -54,11 +55,13 @@ def soluction() :
                 node_dict[b] = Node(b)
                 node_dict[b].parant = a
                 node_dict[b].child = []
+
     #  공배열도 트리이다.
     if len(node_dict) == 0 :
         return True
     if answer == False :
         return answer
+    
     #  루트 노드 찾기 and 부모가 없는 노드가 2개이면 한개의 트리가 아니다.
     for v in node_dict.values() :
         if v.parant == None :
@@ -75,6 +78,7 @@ def soluction() :
     cycle = 1 + len(node_dict[root].child)
     for i in node_dict[root].child :
         cycle += checkCycle(node_dict[i])
+        
     if cycle != len(node_dict) :
         return False
     return answer
@@ -87,6 +91,7 @@ if __name__ == "__main__":
         check = soluction()
         if not isWorking :
             break
+
         if check :
             string = "Case " + str(num) + " is a tree."
             print(string)
