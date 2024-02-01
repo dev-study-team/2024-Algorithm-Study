@@ -179,4 +179,38 @@ static ArrayList<int[]>[] children;
             }
         }
     }
+---
+다른 사람풀이
+하나의 dfs 메서드를 이용하여구현함
+flag를 이용하여 잘한듯
+    
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(10**9)
+
+n,r = map(int,input().rstrip().split())
+graph = [[] for _ in range(n+1)]
+
+for _ in range(n-1):
+    a,b,c = map(int,input().rstrip().split())
+    graph[a].append((b,c))
+    graph[b].append((a,c))
+
+
+ans =[0,0]
+
+def dfs(u,p,sum,flag):
+    if flag == 0: ans[0] = sum # 기가 노드까지의 간선 길이의 합
+    else: ans[1] = max(ans[1],sum) # 긴 가지의 길이
+    # root가 아닌데 인접노드가 2개보다 많으면, 자식이 두개 -> giga 
+    # root인데 인접 노드가 2개 이상이면 ->  giga
+    if flag==0 and len(graph[u]) > 2 -int(u==r): # 나뭇가지가 나오면 sum 0으로 초기화하고 진행 
+        flag,sum = 1, 0
+    for v,w in graph[u]:
+        if v== p: continue
+        dfs(v,u,sum+w,flag)
+
+dfs(r,r,0,0)
+
+print(ans[0],ans[1])    
     
