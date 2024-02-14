@@ -15,6 +15,9 @@ def solution(x,y,cnt):
     
     _max = max(cnt, _max)
 
+    if visited_alp == 'A-Z':
+        return
+
     for i in range(4):
         nx = x+dx[i]
         ny = y+dy[i]
