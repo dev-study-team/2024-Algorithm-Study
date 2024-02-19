@@ -1,31 +1,27 @@
 n = int(input())
 
-arr =[] # 1,1 0,2 0,0
+ans = 0
+row = [0] * n
 
-def check(arr):
-    for i in range(1,len(arr)):
-        if arr[i-1][0] == arr[i][0] or arr[i-1][1] == arr[i][1]: 
+def is_promising(x):
+    for i in range(x):
+        if row[x] == row[i] or abs(row[x] - row[i]) == abs(x - i):
             return False
-        elif abs(arr[i-1][0]-arr[i][0]) == 1 or abs(arr[i-1][1]-arr[i][1]) == 1:
-            return False
+    
     return True
-   #  (1,1) (3,3)
 
-def backtracking(depth, arr):
-    global cnt
-
-    if depth == n:
-        cnt += 1
+def n_queens(x):
+    global ans
+    if x == n:
+        ans += 1
         return
 
-    for i in range(n):
-        for j in range(n):
-            arr.append((i,j))
-            if check(arr):
-                backtracking(depth+1, arr)
-            arr.pop()
+    else:
+        for i in range(n):
+            # [x, i]에 퀸을 놓겠다.
+            row[x] = i
+            if is_promising(x):
+                n_queens(x+1)
 
-cnt = 0
-backtracking(0, arr)
-
-print(cnt)
+n_queens(0)
+print(ans)
