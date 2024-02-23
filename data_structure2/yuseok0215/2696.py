@@ -50,7 +50,7 @@ def get_median() -> None:
         if i % 2 == 0:
             if len(left) > len(right):
                 heappush(right, mid)
-                mid = -heappop(left
+                mid = -heappop(left)
             elif len(left) < len(right):
                 heappush(left, -mid)
                 mid = heappop(right)

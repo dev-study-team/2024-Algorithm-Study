@@ -19,13 +19,14 @@ for i in range(len(p)):
     if not stack or stack[-1]!='(': # 
       result = 0
       break
+    
     if p[i-1]=='(': result += tmp # ([] ())
     tmp //= 2
     stack.pop() # stack에서 ( 삭제 결국 )을 append 하지 않기 때문에 () 같이 사라짐
     
   elif p[i]==']':
     if not stack or stack[-1]!='[':
-      result = 0
+      result = 0  
       break
     if p[i-1]=='[': result += tmp
     tmp //= 3

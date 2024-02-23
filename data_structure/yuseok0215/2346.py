@@ -45,6 +45,7 @@ while data: # data가 존재하는 동안
 	elif ret[1] > 0 and data: # 다음 인덱스 위치가 양수면
 		idx = (idx + (ret[1] - 1)) % len(data) # pop한 1덱스 하나 제외 후 오른쪽으로
 
+# 0 1 2 3 4
 
 # 내 틀린 풀이
 

@@ -7,7 +7,7 @@ N = int(sys.stdin.readline())
 circles = []
 
 for i in range(N):
-    x, r = map(int, sys.stdin.readline().split());
+    x, r = map(int, sys.stdin.readline().split())
     circles.append((x-r, i))
     circles.append((x+r, i))    
 circles.sort() 

@@ -61,6 +61,7 @@ def floyd_warshall():
                 if cal_cost < APSP[i][j]:
                     APSP[i][j] = cal_cost
                     path[i][j] = path[i][mid] + path[mid][j][1:]
+                    # 1 -> 4 1-> 2(1,2)  2-> 4(3,4) -> (1,2,3,4)
     return
 
 floyd_warshall()

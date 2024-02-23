@@ -7,6 +7,7 @@ while True:
     n,k = map(int,input().split())
     if [n,k]==[0,0]:
         break
+
     nums = list(map(int,input().split()))
     parent = defaultdict(int) # 딕셔너리 초기화
 
@@ -19,6 +20,7 @@ while True:
     count=0
     if parent[parent[k]]: # 부모의 부모가 존재한다면
         for num in nums:
-            if (parent[parent[k]] == parent[parent[num]]) and parent[num]!=parent[k]: #부모의 부모가 같다면
+            if (parent[parent[k]] == parent[parent[num]]) and parent[num]!=parent[k]: 
+                #부모의 부모가 같고 부모가 다르면
                 count+=1
     print(count)

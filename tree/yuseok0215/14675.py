@@ -11,7 +11,7 @@ for _ in range(q):
     if t == 2:
         print("yes")
     else:
-        if len(graph[k]) <= 1:
+        if len(graph[k]) <= 1: 
             print("no")
         else:
             print("yes")
